@@ -280,7 +280,7 @@ module LicenseFinder
     def self.restore(persisted, result = new)
       return result unless persisted
 
-      actions = YAML.load(persisted)
+      actions = YAML.load(persisted, permitted_classes: [Time, Symbol])
 
       list_of_actions = (actions || []).map(&:first)
 
